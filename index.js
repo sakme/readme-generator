@@ -113,7 +113,7 @@ const questions = () => {
 
 // TODO: Create a function to write README file
 writeToFile = markdown => {
-    fs.writeFile('./README.md', markdown, (err) => {
+    fs.writeFile('./dist/README.md', markdown, (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
       })
