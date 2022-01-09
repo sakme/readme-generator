@@ -1,6 +1,8 @@
-# ReadMe Generator
+![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-The README Generator is a command line application written using Node.js and the Inquirer NPM. Using command line prompts you can enter all of the information needed to generate your README.md file.
+# README Generator
+
+The README Generator is a command line utility built with node.js and inquirer.js. The utility build you a README.md file for your project by answering a series of prompts.
 
 ## Table of Contents
 
@@ -14,27 +16,27 @@ The README Generator is a command line application written using Node.js and the
 
 ## Installation
 
-1. Clone the repository to your local environment.
-2. Open a terminal and enter "install -i inquirer"
+1. Open bash and clone the repo to your local machine.
+2. open bash and run "npm -i inquirer"
 
 ## Usage
 
-1. Open the terminal and enter "node index.js"
-2. Complete all of the prompts.
-3. You'll find the generated README.md file in the "dist" folder.
-4. Copy the README.md to the root of your project folder.
+1. Open bash and run "node index.js"
+2. Answer all prompts.
+3. Look in the "dist" folder for the generated README.md file and copy it to your project folder.
 
 ## License
 
-MIT License
+[Licensed under the GNU LGPL v3](https://www.gnu.org/licenses/lgpl-3.0)
 
 ## Contribution
 
-If you want to contribute, create an issue. Or you can fork the respository.
+If you would like to contribute, feel free to open a new issue or fork the project.
 
 ## Tests
 
-Figure it out
+Figure it out man!
+Sorry, I'm lazy.
 
 ## Questions
 
