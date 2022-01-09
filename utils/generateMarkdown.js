@@ -17,7 +17,6 @@ ${description}
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [Credits](#credits)
 * [License](#license)
 * [Contribute](#contribution)
 * [Tests](#tests)
@@ -48,7 +47,7 @@ ${test.map(({ testCase, confirmAddTest }) => {
 return `${testCase}
 `;}).join('')}
 
-## Questions
+## Questions?
 [GitHub Profile](https://github.com/${github})
 [Email Me](mailto:${email})
 [Add an issue](https://github.com/${github}/readme-generator/issues)
