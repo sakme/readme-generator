@@ -25,6 +25,8 @@ The README Generator is a command line utility built with node.js and inquirer.j
 2. Answer all prompts.
 3. Look in the "dist" folder for the generated README.md file and copy it to your project folder.
 
+[Walkthrough Video](https://watch.screencastify.com/v/U0fQe10bPFrrLVEC5Rv6)
+
 ## License
 
 [Licensed under the GNU LGPL v3](https://www.gnu.org/licenses/lgpl-3.0)
