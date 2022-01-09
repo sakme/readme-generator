@@ -1,12 +1,9 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-// const generatePage = require('./README.MD');
 const generateMarkdown = require('./utils/generateMarkdown.js');
-const licenses = require('./utils/license.js');
 const fs = require('fs');
+var dataArr = {};
 
-// TODO: Create an array of questions for user input
-const questions = () => {
+const baseQuestions = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -71,61 +68,175 @@ const questions = () => {
                         'The Unlicense',
                         'WTFPL',
                         'zlib/libpng License'
-                    ]
+                    ],
+            validate: licenseInput => {
+                if (licenseInput) {
+                    return true;
+                } else {
+                    console.log('Please add licensing information!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
-            name: 'installation',
-            message: 'What are the steps required to install your project?'
-        },
-        {
-            type: 'input',
-            name: 'usage',
-            message: 'Provide instructions and examples for use.'
-        },
-        {
-            type: 'input',
-            name: 'credits',
-            message: 'List your collaborators, if any, with links to their GitHub profiles'
-        },
-        {
-            type: 'confirm',
             name: 'contribution',
-            message: 'Do you want to add a Contributor Covenant'
+            message: 'Enter info about contributing to the project',
+            validate: contributionInput => {
+                if (contributionInput) {
+                    return true;
+                } else {
+                    console.log('Please add contribution information!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
-            name: 'tests',
-            message: 'Add test cases here'
+            name: 'github',
+            message: 'Add GitHub username',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please add your github username!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
-            name: 'questions',
-            message: 'Add questions here'
-        },
-        {
-            type: 'confirm',
-            name: 'toc',
-            message: 'Would you like to add a table of contents?'
+            name: 'email',
+            message: 'Add email address',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please add your email address!');
+                    return false;
+                }
+            }
         }
     ])
 };
 
-// TODO: Create a function to write README file
+const addInstallation = dataArr => {
+    if (!dataArr.installation) {
+        dataArr.installation = [];
+    }
+
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'installation',
+            message: 'Add an installation step',
+            validate: installationInput => {
+                if (installationInput) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAddInstallation',
+            message: 'Would you like to add another instruction?',
+            default: false
+        }
+    ])
+    .then(data => {
+        dataArr.installation.push(data);
+        if (data.confirmAddInstallation) {
+            return addInstallation(dataArr);
+        } else {
+            return dataArr;
+        }
+    })
+};
+
+const addUsage = dataArr => {
+    if (!dataArr.usage) {
+        dataArr.usage = [];
+    }
+
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'Add a usage example',
+            validate: usageInput => {
+                if (usageInput) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAddUsage',
+            message: 'Would you like to add another usage example?',
+            default: false
+        }
+    ])
+    .then(data => {
+        dataArr.usage.push(data);
+        if (data.confirmAddUsage) {
+            return addUsage(dataArr);
+        } else {
+            return dataArr;
+        }
+    })
+};
+
+const addTest = dataArr => {
+    if (!dataArr.test) {
+        dataArr.test = [];
+    }
+
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'test',
+            message: 'Add a test example.',
+            validate: testInput => {
+                if (testInput) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAddTest',
+            message: 'Would you like to add another test example?',
+            default: false
+        }
+    ])
+    .then(data => {
+        dataArr.test.push(data);
+        if (data.confirmAddTest) {
+            return addTest(dataArr);
+        } else {
+            return dataArr;
+        }
+    })
+};
+
 writeToFile = markdown => {
     fs.writeFile('./dist/README.md', markdown, (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
       })
-};
+}; 
 
-// TODO: Create a function to initialize app
-// function init() {
-//     questions();
-// }
-
-// Function call to initialize app
-questions()
-    // .then(test => console.log(test));
-    .then(generateMarkdown)
+baseQuestions()
+    .then(addInstallation)
+    .then(addUsage)
+    .then(addTest)
+    .then(data => {
+        return generateMarkdown(data);
+    })
     .then(writeToFile);
