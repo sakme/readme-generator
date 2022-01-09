@@ -35,16 +35,16 @@ return `${testCase}
 `;
 };
 
-const lookupLicense = (gen, lic) => {
-return `${gen
-.filter(({ licenseName }) => licenseName === lic[0])
-.map(({ licenseName, image, badge, link }) => {
-  console.log(licenseName, link);
-  return `[Licensed under the ${licenseName}](${link})
-  `;
-}).join('')}
-`;
-};
+// const lookupLicense = (gen, lic) => {
+// return `${gen
+// .filter(({ licenseName }) => licenseName === lic[0])
+// .map(({ licenseName, image, badge, link }) => {
+//   console.log(licenseName, link);
+//   return `[Licensed under the ${licenseName}](${link})
+//   `;
+// }).join('')}
+// `;
+// };
 
 const generateMarkdown = data => {
   console.log(data);
@@ -70,7 +70,13 @@ ${insInst(installation)}
 ${insUse(usage)}
 
 ## License
-${lookupLicense(licenseArr, license)}
+${licenseArr
+  .filter(({ licenseName }) => licenseName === license[0])
+  .map(({ licenseName, image, badge, link }) => {
+    console.log(licenseName, link);
+    return `[Licensed under the ${licenseName}](${link})
+    `;
+  }).join('')}
 
 ## Contribution
 ${contribution}
