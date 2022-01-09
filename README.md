@@ -35,9 +35,6 @@ If you would like to contribute, feel free to open a new issue or fork the proje
 
 ## Tests
 
-Figure it out man!
-Sorry, I'm lazy.
-
 ## Questions
 
 [GitHub Profile](https://github.com/sakme)
