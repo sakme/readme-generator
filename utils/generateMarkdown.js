@@ -20,7 +20,7 @@ ${description}
 * [License](#license)
 * [Contribute](#contribution)
 * [Tests](#tests)
-* [Questions?](#questions?)
+* [Questions](#questions)
 
 ## Installation
 ${installation.map(({ installInstruction, confirmAddInstallation }) => { 
@@ -47,7 +47,7 @@ ${test.map(({ testCase, confirmAddTest }) => {
 return `${testCase}
 `;}).join('')}
 
-## Questions?
+## Questions
 [GitHub Profile](https://github.com/${github})
 [Email Me](mailto:${email})
 [Add an issue](https://github.com/${github}/readme-generator/issues)

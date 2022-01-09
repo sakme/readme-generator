@@ -12,7 +12,7 @@ The README Generator is a command line utility built with node.js and inquirer.j
 - [License](#license)
 - [Contribute](#contribution)
 - [Tests](#tests)
-- [Questions?](#questions?)
+- [Questions](#questions)
 
 ## Installation
 
@@ -38,7 +38,7 @@ If you would like to contribute, feel free to open a new issue or fork the proje
 Figure it out man!
 Sorry, I'm lazy.
 
-## Questions?
+## Questions
 
 [GitHub Profile](https://github.com/sakme)
 [Email Me](mailto:alan@akme.us)
