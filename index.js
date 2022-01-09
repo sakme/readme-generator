@@ -128,10 +128,10 @@ const addInstallation = dataArr => {
     return inquirer.prompt ([
         {
             type: 'input',
-            name: 'installation',
+            name: 'installInstruction',
             message: 'Add an installation step',
-            validate: installationInput => {
-                if (installationInput) {
+            validate: installInstructionInput => {
+                if (installInstructionInput) {
                     return true;
                 } else {
                     return false;
@@ -163,10 +163,10 @@ const addUsage = dataArr => {
     return inquirer.prompt ([
         {
             type: 'input',
-            name: 'usage',
+            name: 'usageInstruction',
             message: 'Add a usage example',
-            validate: usageInput => {
-                if (usageInput) {
+            validate: usageInstructionInput => {
+                if (usageInstructionInput) {
                     return true;
                 } else {
                     return false;
@@ -198,10 +198,10 @@ const addTest = dataArr => {
     return inquirer.prompt ([
         {
             type: 'input',
-            name: 'test',
+            name: 'testCase',
             message: 'Add a test example.',
-            validate: testInput => {
-                if (testInput) {
+            validate: testCaseInput => {
+                if (testCaseInput) {
                     return true;
                 } else {
                     return false;
